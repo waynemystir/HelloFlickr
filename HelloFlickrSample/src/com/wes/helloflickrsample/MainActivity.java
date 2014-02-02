@@ -4,6 +4,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,18 +32,21 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
+import com.squareup.okhttp.OkHttpClient;
 import com.squareup.picasso.Picasso;
-import com.wes.helloflickrsample.R;
 
 public class MainActivity extends Activity {
 
 	private GridView gridView;
 	private GridAdapter gridAdapter;
-	private final String BASE_URL = "http://api.flickr.com/services/rest/";
-	private final String METHOD = "flickr.interestingness.getList";
-	private final String API_KEY = "1eec2861941ba4c2a13c516116ce30b5";
+	private static final String BASE_URL = "http://api.flickr.com/services/rest/";
+	private static final String METHOD = "flickr.interestingness.getList";
+	private static final String API_KEY = "1eec2861941ba4c2a13c516116ce30b5";
 	private final String FLICKR_URL = String.format("%s?method=%s&api_key=%s&format=%s&nojsoncallback=%s", BASE_URL,
 			METHOD, API_KEY, "json", "1");
+
+	private static final Gson GSON = new Gson();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +67,12 @@ public class MainActivity extends Activity {
 
 				@Override
 				public void onClick(View arg0) {
-					// you can use an async task or thread
-					new GetImageUrlsWithTask().execute("");
+					// you can use an async task or thread or the thread with
+					// okhttp and gson
+
+					// new GetImageUrlsWithTask().execute("");
 					// getImageUrlsWithThread();
+					getImageUrlsWithOKHttpAndGson();
 				}
 			});
 	}
@@ -107,17 +116,12 @@ public class MainActivity extends Activity {
 	}
 
 	private void getImageUrlsWithThread() {
+		if (gridAdapter != null)
+			gridAdapter.clearFlickrImages();
+
 		new Thread() {
 			@Override
 			public void run() {
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						if (gridAdapter != null)
-							gridAdapter.clearFlickrImages();
-					}
-				});
-
 				String tmpResponse = null;
 				try {
 					tmpResponse = getHttpResponse();
@@ -142,6 +146,60 @@ public class MainActivity extends Activity {
 		}.start();
 	}
 
+	private void getImageUrlsWithOKHttpAndGson() {
+		if (gridAdapter != null)
+			gridAdapter.clearFlickrImages();
+
+		new Thread() {
+			@Override
+			public void run() {
+				OkHttpClient client = new OkHttpClient();
+
+				// Create request for remote resource.
+				HttpURLConnection connection = null;
+				InputStream is = null;
+				InputStreamReader isr = null;
+
+				try {
+					connection = client.open(new URL(FLICKR_URL));
+					is = connection.getInputStream();
+				} catch (final Exception ex) {
+					Log.d("MainActivity with OkHttp", ex.toString());
+				}
+
+				if (is == null)
+					return;
+
+				isr = new InputStreamReader(is);
+
+				// Deserialize HTTP response to concrete type.
+				final FlickrJsonPhotos flickrs = GSON.fromJson(isr, FlickrJsonPhotos.class);
+
+				if (flickrs == null)
+					Log.d("MainActivity okhttp", "flickrs is null");
+				else if (flickrs.getPhotos() == null)
+					Log.d("MainActivity okhttp", "flickrs.getPhotoSSS()==null");
+				else if (flickrs.getPhotos().getPhoto() == null)
+					Log.d("MainActivity okhttp", "flickrs.getPhotos().getPhoto()==null");
+				else {
+					Log.d("MainActivity okhttp",
+							String.format("flickrs.getPhotos().getPhoto().size()=%s", flickrs.getPhotos().getPhoto()
+									.size()));
+
+					for (final FlickrPhoto flickr : flickrs.getPhotos().getPhoto()) {
+						if (gridAdapter != null)
+							runOnUiThread(new Runnable() {
+								@Override
+								public void run() {
+									gridAdapter.addFlickerImage(flickr);
+								}
+							});
+					}
+				}
+			}
+		}.start();
+	}
+
 	private String getHttpResponse() throws IOException {
 		String responseString = null;
 		DefaultHttpClient client = new DefaultHttpClient();
@@ -162,29 +220,34 @@ public class MainActivity extends Activity {
 		for (int i = 0; i < results.length(); i++) {
 			JSONObject result = results.getJSONObject(i);
 			// get the photo here
-			String farm = result.getString("farm");
-			String server = result.getString("server");
 			String id = result.getString("id");
+			String owner = result.getString("owner");
 			String secret = result.getString("secret");
+			String server = result.getString("server");
+			String farm = result.getString("farm");
+			String title = result.getString("title");
+			int ispublic = result.getInt("ispublic");
+			int isfriend = result.getInt("isfriend");
+			int isfamily = result.getInt("isfamily");
 
-			String durl = String.format("http://farm%s.staticflickr.com/%s/%s_%s.jpg", farm, server, id, secret);
 			if (gridAdapter != null)
-				gridAdapter.addFlickerImage(durl);
+				gridAdapter.addFlickerImage(new FlickrPhoto(id, owner, secret, server, farm, title, ispublic, isfriend,
+						isfamily));
 		}
 	}
 
 	private class GridAdapter extends BaseAdapter {
 
-		private List<FlickrImage> flickrImages = new ArrayList<MainActivity.FlickrImage>();
+		private List<FlickrPhoto> flickrPhotos = new ArrayList<FlickrPhoto>();
 
 		@Override
 		public int getCount() {
-			return flickrImages.size();
+			return flickrPhotos.size();
 		}
 
 		@Override
-		public FlickrImage getItem(int position) {
-			return flickrImages.get(position);
+		public FlickrPhoto getItem(int position) {
+			return flickrPhotos.get(position);
 		}
 
 		@Override
@@ -205,18 +268,17 @@ public class MainActivity extends Activity {
 				imageView = vh.imageView;
 			}
 
-			FlickrImage flickrImage = getItem(position);
+			FlickrPhoto flickrPhoto = getItem(position);
 
 			// you can use either Picasso or UrlImageViewHelper
 
-			if (imageView != null && flickrImage != null) {
+			if (imageView != null && flickrPhoto != null)
 				Picasso.with(MainActivity.this) //
-						.load(flickrImage.getUrl()) //
+						.load(flickrPhoto.getUrl()) //
 						.placeholder(R.drawable.ic_launcher) //
 						.error(R.drawable.error) //
 						// .fit() //
 						.into(imageView);
-			}
 
 			// if (imageView != null && flickrImage != null)
 			// UrlImageViewHelper.setUrlDrawable(imageView,
@@ -242,32 +304,182 @@ public class MainActivity extends Activity {
 			}
 		}
 
-		public void addFlickerImage(String url) {
-			flickrImages.add(new FlickrImage(url));
+		public void addFlickerImage(FlickrPhoto flickrPhoto) {
+			flickrPhotos.add(flickrPhoto);
 			notifyDataSetChanged();
 		}
 
 		public void clearFlickrImages() {
-			flickrImages.clear();
+			flickrPhotos.clear();
 			notifyDataSetChanged();
 		}
 
 	}
 
-	private class FlickrImage {
+	private class FlickrJsonPhotos {
+		private FlickrPhotos photos;
 
-		private String url;
+		public FlickrPhotos getPhotos() {
+			return photos;
+		}
 
-		public FlickrImage(String url) {
-			this.setUrl(url);
+		public void setPhotos(FlickrPhotos photos) {
+			this.photos = photos;
+		}
+	}
+
+	private class FlickrPhotos {
+		private int page;
+		private int pages;
+		private int perpage;
+		private int total;
+
+		private List<FlickrPhoto> photo;
+
+		public int getPage() {
+			return page;
+		}
+
+		public void setPage(int page) {
+			this.page = page;
+		}
+
+		public int getPages() {
+			return pages;
+		}
+
+		public void setPages(int pages) {
+			this.pages = pages;
+		}
+
+		public int getPerpage() {
+			return perpage;
+		}
+
+		public void setPerpage(int perpage) {
+			this.perpage = perpage;
+		}
+
+		public int getTotal() {
+			return total;
+		}
+
+		public void setTotal(int total) {
+			this.total = total;
+		}
+
+		public List<FlickrPhoto> getPhoto() {
+			return photo;
+		}
+
+		public void setPhoto(List<FlickrPhoto> photo) {
+			this.photo = photo;
+		}
+	}
+
+	private class FlickrPhoto {
+
+		public FlickrPhoto() {
+
+		}
+
+		public FlickrPhoto(String id, String owner, String secret, String server, String farm, String title,
+				int ispublic, int isfriend, int isfamily) {
+			this.id = id;
+			this.owner = owner;
+			this.secret = secret;
+			this.server = server;
+			this.farm = farm;
+			this.title = title;
+			this.ispublic = ispublic;
+			this.isfriend = isfriend;
+			this.isfamily = isfamily;
 		}
 
 		public String getUrl() {
-			return url;
+			return String.format("http://farm%s.staticflickr.com/%s/%s_%s.jpg", farm, server, id, secret);
 		}
 
-		public void setUrl(String url) {
-			this.url = url;
+		private String id;
+		private String owner;
+		private String secret;
+		private String server;
+		private String farm;
+		private String title;
+		private int ispublic;
+		private int isfriend;
+		private int isfamily;
+
+		public String getId() {
+			return id;
+		}
+
+		public void setId(String id) {
+			this.id = id;
+		}
+
+		public String getOwner() {
+			return owner;
+		}
+
+		public void setOwner(String owner) {
+			this.owner = owner;
+		}
+
+		public String getSecret() {
+			return secret;
+		}
+
+		public void setSecret(String secret) {
+			this.secret = secret;
+		}
+
+		public String getServer() {
+			return server;
+		}
+
+		public void setServer(String server) {
+			this.server = server;
+		}
+
+		public String getFarm() {
+			return farm;
+		}
+
+		public void setFarm(String farm) {
+			this.farm = farm;
+		}
+
+		public String getTitle() {
+			return title;
+		}
+
+		public void setTitle(String title) {
+			this.title = title;
+		}
+
+		public int isIspublic() {
+			return ispublic;
+		}
+
+		public void setIspublic(int ispublic) {
+			this.ispublic = ispublic;
+		}
+
+		public int isIsfriend() {
+			return isfriend;
+		}
+
+		public void setIsfriend(int isfriend) {
+			this.isfriend = isfriend;
+		}
+
+		public int isIsfamily() {
+			return isfamily;
+		}
+
+		public void setIsfamily(int isfamily) {
+			this.isfamily = isfamily;
 		}
 	}
 
