@@ -18,6 +18,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import retrofit.http.POST;
+import retrofit.http.Query;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -40,11 +46,13 @@ public class MainActivity extends Activity {
 
 	private GridView gridView;
 	private GridAdapter gridAdapter;
-	private static final String BASE_URL = "http://api.flickr.com/services/rest/";
+	private static final String BASE_URL = "http://api.flickr.com/services/";
 	private static final String METHOD = "flickr.interestingness.getList";
 	private static final String API_KEY = "1eec2861941ba4c2a13c516116ce30b5";
-	private final String FLICKR_URL = String.format("%s?method=%s&api_key=%s&format=%s&nojsoncallback=%s", BASE_URL,
-			METHOD, API_KEY, "json", "1");
+	private static final String FORMAT = "json";
+	private static final int NON_JSON_CALLBACK = 1;
+	private final String FLICKR_URL = String.format("%s/rest?method=%s&api_key=%s&format=%s&nojsoncallback=%s",
+			BASE_URL, METHOD, API_KEY, FORMAT, NON_JSON_CALLBACK);
 
 	private static final Gson GSON = new Gson();
 
@@ -72,7 +80,8 @@ public class MainActivity extends Activity {
 
 					// new GetImageUrlsWithTask().execute("");
 					// getImageUrlsWithThread();
-					getImageUrlsWithOKHttpAndGson();
+					//getImageUrlsWithOKHttpAndGson();
+					getImageUrlsWithRetrofit();
 				}
 			});
 	}
@@ -198,6 +207,69 @@ public class MainActivity extends Activity {
 				}
 			}
 		}.start();
+	}
+
+	private void getImageUrlsWithRetrofit() {
+		RestAdapter ra = new RestAdapter.Builder().setEndpoint(BASE_URL).build();
+		FlickrService s = ra.create(FlickrService.class);
+		s.getPhotos(METHOD, API_KEY, FORMAT, NON_JSON_CALLBACK, new Callback<FlickrJsonPhotos>() {
+
+			// @Override
+			// public void success(Response arg0, Response arg1) {
+			// InputStream is0 = null;
+			// InputStream is1 = null;
+			// String b0 = null;
+			// String b1 = null;
+			// try {
+			// is0 = arg0.getBody().in();
+			// is1 = arg1.getBody().in();
+			// b0 = readToEnd(is0);
+			// b1 = readToEnd(is1);
+			// } catch (IOException e) {
+			// // TODO Auto-generated catch block
+			// e.printStackTrace();
+			// }
+			// Log.d("WWWW RETROFIT", String.format("SUCCESS 1[%s] 2[%s]", b0,
+			// b1));
+			// }
+
+			@Override
+			public void failure(RetrofitError arg0) {
+				Log.d("WWWW RETROFIT", "FAILURE");
+			}
+
+			@Override
+			public void success(FlickrJsonPhotos flickrs, Response arg1) {
+
+				if (flickrs == null)
+					Log.d("MainActivity RETROFIT", "flickrs is null");
+				else if (flickrs.getPhotos() == null)
+					Log.d("MainActivity RETROFIT", "flickrs.getPhotoSSS()==null");
+				else if (flickrs.getPhotos().getPhoto() == null)
+					Log.d("MainActivity RETROFIT", "flickrs.getPhotos().getPhoto()==null");
+				else {
+					Log.d("MainActivity RETROFIT",
+							String.format("flickrs.getPhotos().getPhoto().size()=%s", flickrs.getPhotos().getPhoto()
+									.size()));
+
+					for (final FlickrPhoto flickr : flickrs.getPhotos().getPhoto()) {
+						if (gridAdapter != null)
+							runOnUiThread(new Runnable() {
+								@Override
+								public void run() {
+									gridAdapter.addFlickerImage(flickr);
+								}
+							});
+					}
+				}
+			}
+		});
+	}
+
+	private interface FlickrService {
+		@POST("/rest")
+		void getPhotos(@Query("method") String method, @Query("api_key") String apiKey, @Query("format") String format,
+				@Query("nojsoncallback") int nonJson, Callback<FlickrJsonPhotos> cb);
 	}
 
 	private String getHttpResponse() throws IOException {
