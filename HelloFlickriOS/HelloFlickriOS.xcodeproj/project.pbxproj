@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B04497AD18A5498C00EF9B3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04497AC18A5498C00EF9B3D /* Foundation.framework */; };
+		B04497AF18A5498C00EF9B3D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04497AE18A5498C00EF9B3D /* CoreGraphics.framework */; };
+		B04497B118A5498C00EF9B3D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04497B018A5498C00EF9B3D /* UIKit.framework */; };
+		B04497B718A5498C00EF9B3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B04497B518A5498C00EF9B3D /* InfoPlist.strings */; };
+		B04497B918A5498C00EF9B3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B04497B818A5498C00EF9B3D /* main.m */; };
+		B04497BD18A5498C00EF9B3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B04497BC18A5498C00EF9B3D /* AppDelegate.m */; };
+		B04497BF18A5498C00EF9B3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B04497BE18A5498C00EF9B3D /* Images.xcassets */; };
+		B04497C618A5498C00EF9B3D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04497C518A5498C00EF9B3D /* XCTest.framework */; };
+		B04497C718A5498C00EF9B3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04497AC18A5498C00EF9B3D /* Foundation.framework */; };
+		B04497C818A5498C00EF9B3D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04497B018A5498C00EF9B3D /* UIKit.framework */; };
+		B04497D018A5498C00EF9B3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B04497CE18A5498C00EF9B3D /* InfoPlist.strings */; };
+		B04497D218A5498C00EF9B3D /* HelloFlickriOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B04497D118A5498C00EF9B3D /* HelloFlickriOSTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B04497C918A5498C00EF9B3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B04497A118A5498C00EF9B3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B04497A818A5498C00EF9B3D;
+			remoteInfo = HelloFlickriOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B04497A918A5498C00EF9B3D /* HelloFlickriOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloFlickriOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B04497AC18A5498C00EF9B3D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B04497AE18A5498C00EF9B3D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B04497B018A5498C00EF9B3D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B04497B418A5498C00EF9B3D /* HelloFlickriOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloFlickriOS-Info.plist"; sourceTree = "<group>"; };
+		B04497B618A5498C00EF9B3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B04497B818A5498C00EF9B3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B04497BA18A5498C00EF9B3D /* HelloFlickriOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloFlickriOS-Prefix.pch"; sourceTree = "<group>"; };
+		B04497BB18A5498C00EF9B3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B04497BC18A5498C00EF9B3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B04497BE18A5498C00EF9B3D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B04497C418A5498C00EF9B3D /* HelloFlickriOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloFlickriOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B04497C518A5498C00EF9B3D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B04497CD18A5498C00EF9B3D /* HelloFlickriOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloFlickriOSTests-Info.plist"; sourceTree = "<group>"; };
+		B04497CF18A5498C00EF9B3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B04497D118A5498C00EF9B3D /* HelloFlickriOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloFlickriOSTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B04497A618A5498C00EF9B3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04497AF18A5498C00EF9B3D /* CoreGraphics.framework in Frameworks */,
+				B04497B118A5498C00EF9B3D /* UIKit.framework in Frameworks */,
+				B04497AD18A5498C00EF9B3D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B04497C118A5498C00EF9B3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04497C618A5498C00EF9B3D /* XCTest.framework in Frameworks */,
+				B04497C818A5498C00EF9B3D /* UIKit.framework in Frameworks */,
+				B04497C718A5498C00EF9B3D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B04497A018A5498C00EF9B3D = {
+			isa = PBXGroup;
+			children = (
+				B04497B218A5498C00EF9B3D /* HelloFlickriOS */,
+				B04497CB18A5498C00EF9B3D /* HelloFlickriOSTests */,
+				B04497AB18A5498C00EF9B3D /* Frameworks */,
+				B04497AA18A5498C00EF9B3D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B04497AA18A5498C00EF9B3D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B04497A918A5498C00EF9B3D /* HelloFlickriOS.app */,
+				B04497C418A5498C00EF9B3D /* HelloFlickriOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B04497AB18A5498C00EF9B3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B04497AC18A5498C00EF9B3D /* Foundation.framework */,
+				B04497AE18A5498C00EF9B3D /* CoreGraphics.framework */,
+				B04497B018A5498C00EF9B3D /* UIKit.framework */,
+				B04497C518A5498C00EF9B3D /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B04497B218A5498C00EF9B3D /* HelloFlickriOS */ = {
+			isa = PBXGroup;
+			children = (
+				B04497BB18A5498C00EF9B3D /* AppDelegate.h */,
+				B04497BC18A5498C00EF9B3D /* AppDelegate.m */,
+				B04497BE18A5498C00EF9B3D /* Images.xcassets */,
+				B04497B318A5498C00EF9B3D /* Supporting Files */,
+			);
+			path = HelloFlickriOS;
+			sourceTree = "<group>";
+		};
+		B04497B318A5498C00EF9B3D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B04497B418A5498C00EF9B3D /* HelloFlickriOS-Info.plist */,
+				B04497B518A5498C00EF9B3D /* InfoPlist.strings */,
+				B04497B818A5498C00EF9B3D /* main.m */,
+				B04497BA18A5498C00EF9B3D /* HelloFlickriOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B04497CB18A5498C00EF9B3D /* HelloFlickriOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				B04497D118A5498C00EF9B3D /* HelloFlickriOSTests.m */,
+				B04497CC18A5498C00EF9B3D /* Supporting Files */,
+			);
+			path = HelloFlickriOSTests;
+			sourceTree = "<group>";
+		};
+		B04497CC18A5498C00EF9B3D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B04497CD18A5498C00EF9B3D /* HelloFlickriOSTests-Info.plist */,
+				B04497CE18A5498C00EF9B3D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B04497A818A5498C00EF9B3D /* HelloFlickriOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B04497D518A5498C00EF9B3D /* Build configuration list for PBXNativeTarget "HelloFlickriOS" */;
+			buildPhases = (
+				B04497A518A5498C00EF9B3D /* Sources */,
+				B04497A618A5498C00EF9B3D /* Frameworks */,
+				B04497A718A5498C00EF9B3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloFlickriOS;
+			productName = HelloFlickriOS;
+			productReference = B04497A918A5498C00EF9B3D /* HelloFlickriOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B04497C318A5498C00EF9B3D /* HelloFlickriOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B04497D818A5498C00EF9B3D /* Build configuration list for PBXNativeTarget "HelloFlickriOSTests" */;
+			buildPhases = (
+				B04497C018A5498C00EF9B3D /* Sources */,
+				B04497C118A5498C00EF9B3D /* Frameworks */,
+				B04497C218A5498C00EF9B3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B04497CA18A5498C00EF9B3D /* PBXTargetDependency */,
+			);
+			name = HelloFlickriOSTests;
+			productName = HelloFlickriOSTests;
+			productReference = B04497C418A5498C00EF9B3D /* HelloFlickriOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B04497A118A5498C00EF9B3D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "WAYNE SMALL";
+				TargetAttributes = {
+					B04497C318A5498C00EF9B3D = {
+						TestTargetID = B04497A818A5498C00EF9B3D;
+					};
+				};
+			};
+			buildConfigurationList = B04497A418A5498C00EF9B3D /* Build configuration list for PBXProject "HelloFlickriOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B04497A018A5498C00EF9B3D;
+			productRefGroup = B04497AA18A5498C00EF9B3D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B04497A818A5498C00EF9B3D /* HelloFlickriOS */,
+				B04497C318A5498C00EF9B3D /* HelloFlickriOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B04497A718A5498C00EF9B3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04497B718A5498C00EF9B3D /* InfoPlist.strings in Resources */,
+				B04497BF18A5498C00EF9B3D /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B04497C218A5498C00EF9B3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04497D018A5498C00EF9B3D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B04497A518A5498C00EF9B3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04497BD18A5498C00EF9B3D /* AppDelegate.m in Sources */,
+				B04497B918A5498C00EF9B3D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B04497C018A5498C00EF9B3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04497D218A5498C00EF9B3D /* HelloFlickriOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B04497CA18A5498C00EF9B3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B04497A818A5498C00EF9B3D /* HelloFlickriOS */;
+			targetProxy = B04497C918A5498C00EF9B3D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B04497B518A5498C00EF9B3D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B04497B618A5498C00EF9B3D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B04497CE18A5498C00EF9B3D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B04497CF18A5498C00EF9B3D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B04497D318A5498C00EF9B3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B04497D418A5498C00EF9B3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B04497D618A5498C00EF9B3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloFlickriOS/HelloFlickriOS-Prefix.pch";
+				INFOPLIST_FILE = "HelloFlickriOS/HelloFlickriOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B04497D718A5498C00EF9B3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloFlickriOS/HelloFlickriOS-Prefix.pch";
+				INFOPLIST_FILE = "HelloFlickriOS/HelloFlickriOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B04497D918A5498C00EF9B3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HelloFlickriOS.app/HelloFlickriOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloFlickriOS/HelloFlickriOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "HelloFlickriOSTests/HelloFlickriOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B04497DA18A5498C00EF9B3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HelloFlickriOS.app/HelloFlickriOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloFlickriOS/HelloFlickriOS-Prefix.pch";
+				INFOPLIST_FILE = "HelloFlickriOSTests/HelloFlickriOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B04497A418A5498C00EF9B3D /* Build configuration list for PBXProject "HelloFlickriOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B04497D318A5498C00EF9B3D /* Debug */,
+				B04497D418A5498C00EF9B3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B04497D518A5498C00EF9B3D /* Build configuration list for PBXNativeTarget "HelloFlickriOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B04497D618A5498C00EF9B3D /* Debug */,
+				B04497D718A5498C00EF9B3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B04497D818A5498C00EF9B3D /* Build configuration list for PBXNativeTarget "HelloFlickriOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B04497D918A5498C00EF9B3D /* Debug */,
+				B04497DA18A5498C00EF9B3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B04497A118A5498C00EF9B3D /* Project object */;
+}
