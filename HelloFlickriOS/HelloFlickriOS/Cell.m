@@ -14,18 +14,14 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.theImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)];
+        //self.theImage.contentMode = UIViewContentModeScaleAspectFill;
+        //self.theImage.clipsToBounds = YES;
+        self.theImage.contentMode = UIViewContentModeScaleAspectFit;
+        
+        [self.contentView addSubview:self.theImage];;
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

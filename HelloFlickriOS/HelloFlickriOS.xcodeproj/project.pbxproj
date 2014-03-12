@@ -19,6 +19,13 @@
 		B04497C818A5498C00EF9B3D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04497B018A5498C00EF9B3D /* UIKit.framework */; };
 		B04497D018A5498C00EF9B3D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B04497CE18A5498C00EF9B3D /* InfoPlist.strings */; };
 		B04497D218A5498C00EF9B3D /* HelloFlickriOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B04497D118A5498C00EF9B3D /* HelloFlickriOSTests.m */; };
+		B04497DD18A54A1D00EF9B3D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04497DC18A54A1D00EF9B3D /* MainViewController.m */; };
+		B04497E018A5C7BC00EF9B3D /* FlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = B04497DF18A5C7BC00EF9B3D /* FlickrPhoto.m */; };
+		B04497E318A5ECFE00EF9B3D /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = B04497E218A5ECFE00EF9B3D /* Cell.m */; };
+		B04497E618A6A47E00EF9B3D /* UIImageView+Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = B04497E518A6A47E00EF9B3D /* UIImageView+Remote.m */; };
+		B044981E18A6A6C000EF9B3D /* FTWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B044981D18A6A6C000EF9B3D /* FTWCache.m */; };
+		B0CB411318AAE1F00004008A /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0CB411218AAE1F00004008A /* MainView.xib */; };
+		B0CB411F18ABFA360004008A /* ClassDDD.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB411E18ABFA360004008A /* ClassDDD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +55,19 @@
 		B04497CD18A5498C00EF9B3D /* HelloFlickriOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloFlickriOSTests-Info.plist"; sourceTree = "<group>"; };
 		B04497CF18A5498C00EF9B3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B04497D118A5498C00EF9B3D /* HelloFlickriOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloFlickriOSTests.m; sourceTree = "<group>"; };
+		B04497DB18A54A1D00EF9B3D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		B04497DC18A54A1D00EF9B3D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		B04497DE18A5C7BC00EF9B3D /* FlickrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhoto.h; sourceTree = "<group>"; };
+		B04497DF18A5C7BC00EF9B3D /* FlickrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhoto.m; sourceTree = "<group>"; };
+		B04497E118A5ECFE00EF9B3D /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		B04497E218A5ECFE00EF9B3D /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		B04497E418A6A47E00EF9B3D /* UIImageView+Remote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Remote.h"; sourceTree = "<group>"; };
+		B04497E518A6A47E00EF9B3D /* UIImageView+Remote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Remote.m"; sourceTree = "<group>"; };
+		B044981C18A6A6C000EF9B3D /* FTWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTWCache.h; sourceTree = "<group>"; };
+		B044981D18A6A6C000EF9B3D /* FTWCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTWCache.m; sourceTree = "<group>"; };
+		B0CB411218AAE1F00004008A /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
+		B0CB411D18ABFA360004008A /* ClassDDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDDD.h; sourceTree = "<group>"; };
+		B0CB411E18ABFA360004008A /* ClassDDD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDDD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +127,21 @@
 		B04497B218A5498C00EF9B3D /* HelloFlickriOS */ = {
 			isa = PBXGroup;
 			children = (
+				B0CB411D18ABFA360004008A /* ClassDDD.h */,
+				B0CB411E18ABFA360004008A /* ClassDDD.m */,
+				B0CB411218AAE1F00004008A /* MainView.xib */,
+				B044981C18A6A6C000EF9B3D /* FTWCache.h */,
+				B044981D18A6A6C000EF9B3D /* FTWCache.m */,
 				B04497BB18A5498C00EF9B3D /* AppDelegate.h */,
 				B04497BC18A5498C00EF9B3D /* AppDelegate.m */,
+				B04497DB18A54A1D00EF9B3D /* MainViewController.h */,
+				B04497DC18A54A1D00EF9B3D /* MainViewController.m */,
+				B04497DE18A5C7BC00EF9B3D /* FlickrPhoto.h */,
+				B04497DF18A5C7BC00EF9B3D /* FlickrPhoto.m */,
+				B04497E118A5ECFE00EF9B3D /* Cell.h */,
+				B04497E218A5ECFE00EF9B3D /* Cell.m */,
+				B04497E418A6A47E00EF9B3D /* UIImageView+Remote.h */,
+				B04497E518A6A47E00EF9B3D /* UIImageView+Remote.m */,
 				B04497BE18A5498C00EF9B3D /* Images.xcassets */,
 				B04497B318A5498C00EF9B3D /* Supporting Files */,
 			);
@@ -219,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0CB411318AAE1F00004008A /* MainView.xib in Resources */,
 				B04497B718A5498C00EF9B3D /* InfoPlist.strings in Resources */,
 				B04497BF18A5498C00EF9B3D /* Images.xcassets in Resources */,
 			);
@@ -239,8 +273,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04497E318A5ECFE00EF9B3D /* Cell.m in Sources */,
 				B04497BD18A5498C00EF9B3D /* AppDelegate.m in Sources */,
+				B04497E018A5C7BC00EF9B3D /* FlickrPhoto.m in Sources */,
+				B04497DD18A54A1D00EF9B3D /* MainViewController.m in Sources */,
+				B04497E618A6A47E00EF9B3D /* UIImageView+Remote.m in Sources */,
 				B04497B918A5498C00EF9B3D /* main.m in Sources */,
+				B044981E18A6A6C000EF9B3D /* FTWCache.m in Sources */,
+				B0CB411F18ABFA360004008A /* ClassDDD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +481,7 @@
 				B04497D718A5498C00EF9B3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B04497D818A5498C00EF9B3D /* Build configuration list for PBXNativeTarget "HelloFlickriOSTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +490,7 @@
 				B04497DA18A5498C00EF9B3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

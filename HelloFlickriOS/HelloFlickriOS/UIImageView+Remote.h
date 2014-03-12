@@ -10,4 +10,8 @@
 
 @interface UIImageView (Remote)
 
+@property (nonatomic, retain) NSURL * imageURL;
+
+- (void) loadImageFromURL:(NSURL*) pURL placeholderImage:(UIImage*)pPlaceholder cachingKey:(NSString*)pKey;
+
 @end
